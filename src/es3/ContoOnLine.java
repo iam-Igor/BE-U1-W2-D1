@@ -1,4 +1,4 @@
-package entities;
+package es3;
 
 import exceptions.BancaException;
 
@@ -23,8 +23,8 @@ public class ContoOnLine extends ContoCorrente {
             } else if (x > maxPrelievo) {
                 throw new BancaException("Prelievo non disponibile.");
             }
-        } catch (Exception e) {
-            e.getMessage();
+        } catch (BancaException e) {
+            System.err.println(e.message);
         }
 
     }

@@ -1,4 +1,4 @@
-package entities;
+package es3;
 
 import exceptions.BancaException;
 
@@ -19,11 +19,11 @@ public class ContoCorrente {
             if (nMovimenti < maxMovimenti)
                 saldo = saldo - x - 0.50;
             if (saldo < 0) {
-                throw new BancaException("il conto è in rosso");
+                throw new BancaException("Il conto è in rosso!");
             }
 
-        } catch (Exception e) {
-            e.getMessage();
+        } catch (BancaException e) {
+            System.err.println(e.message);
         } finally {
             nMovimenti++;
         }
