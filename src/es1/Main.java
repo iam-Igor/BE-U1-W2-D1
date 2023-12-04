@@ -2,11 +2,15 @@ package es1;
 
 import exceptions.NumberLessthanOne;
 import exceptions.PositionOutofBounds;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+    private static Logger log = LoggerFactory.getLogger(Main.class);
+
     public static void main(String[] args) {
 
         int[] numbers = new int[5];
@@ -37,11 +41,14 @@ public class Main {
             int position = userInput.nextInt();
 
             if (num1 < 1) {
+                log.error("Numero minore di uno.");
                 throw new NumberLessthanOne(num1);
             } else if (position < 0 || position > 4) {
+                log.error("Posizione non valida!");
                 throw new PositionOutofBounds(position);
             } else {
                 array[position] = num1;
+                log.info("Operazione andata a buon fine!");
             }
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
